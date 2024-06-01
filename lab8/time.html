@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калинин Игорь Евгеньевич. Число дней с даты рождения</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-48x48.icon">
+    <script src="time.js"></script>
+    <style>
+        #time {
+            text-align: right;
+            color: red;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        #bigTime {
+            font-size: 300px;
+            text-align: center;
+            font-weight: bold;
+            color: red;
+        }
+
+        #timeArrow {
+            width: 5px;
+            height: 100px;
+            margin: 0 auto;
+            background-color: red;
+        }
+
+        .border {
+            margin-top: 50px;
+            border: 5px solid yellow;
+            border-radius: 50%;
+            padding: 50px;
+            max-width: 200px;
+            margin-inline: auto;
+        }
+    </style>
+</head>
+<body onload="showTime(), showSecond(), timeArrow()">
+    <header>
+        НГТУ ФБ, Лабораторная работа 8
+        <div id="time">00:00:00</div>
+    </header>
+
+    <main>
+        <div id="bigTime"></div>
+        <div class="border">
+            <div id="timeArrow">
+
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        &copy; Калинин Игорь, ФБИ-23, 2 курс, 2024 
+    </footer>
+</body>
+</html>
