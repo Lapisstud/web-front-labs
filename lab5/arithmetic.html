@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Калинин Игорь Евгеньевич</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+
+    <script>
+        function showSum() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a + b;
+            alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
+        }
+        function showRasn() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a - b;
+            alert('Разность ' + a + ' и ' + b + ' равна ' + result);
+        }
+        function showProis() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a * b;
+            alert('Произведение ' + a + ' и ' + b + ' равна ' + result);
+        }
+        function showDelen() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a / b;
+            alert('Деление ' + a + ' и ' + b + ' равна ' + result);
+        }
+        function showAutor() {
+            let autor = 'Автор страницы: \nКалинин Игорь Евгеньевич';
+            alert(autor);
+        }
+        function showHel(){
+            let hel = 'Привет!';
+            alert(hel);
+        }
+        function changeOutput(buttonNum, backColor, textColor, borderRadius, borderWidth) {
+            let output = document.getElementById('output');
+            output.innerHTML = 'Нажата кнопка '+ buttonNum;
+            output.style.backgroundColor = backColor;
+            output.style.color = textColor;
+            output.style.borderRadius = borderRadius;
+            output.style.borderWidth = borderWidth;
+        }
+    </script>
+
+    <style>
+        .message {
+            cursor: pointer;
+            font-size: 20px;
+            color: rgb(127, 206, 31);
+            background-color: rgb(244, 11, 11);
+            width: 250px;
+            border: 3px solid;
+            border-radius: 5px;
+            margin: 20px;
+            padding: 20px;
+            display: inline-block;
+        }
+        #output {
+            border: 1px solid;
+            width: 300px;
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <header onclick="showAutor()">
+        НГТУ ФБ, Лабораторная работа 5
+    </header>
+
+    <main>
+        <label>Первое число: <input type="number" value="5154" id="numberA"></label><br>
+        <label>Второе число: <input type="number" value="7891" id="numberB"></label><br>
+        <div class="message" onclick="showSum()">Найти сумму чисел</div>
+        <div class="message" onclick="showRasn()">Найти разность чисел</div>
+        <div class="message" onclick="showProis()">Найти произведение чисел</div>
+        <div class="message" onclick="showDelen()">Найти деление чисел</div>
+        <div class="message" onclick="showAutor()">Узнать, кто автор страницы</div>
+
+        <div>
+            <input type="button" value="Кнопка 1" onclick="changeOutput(1, 'red', 'yellow', '2px', '6px')">
+            <input type="button" value="Кнопка 2" onclick="changeOutput(2, 'black', 'white', '3px', '5px')">
+            <input type="button" value="Кнопка 3" onclick="changeOutput(3, 'black', 'red', '5px', '4px')">
+            <input type="button" value="Кнопка 4" onclick="changeOutput(4, 'pink', 'black', '7px', '3px')">
+        </div>
+
+        <div id="output"></div>
+    </main>
+
+    <footer ondblclick="showHel()">
+        &copy; Калинин Игорь Евгеньевич, ФБИ-23, 2 курс, 2024 
+    </footer>
+</body>
+</html>

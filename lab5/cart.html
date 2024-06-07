@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Калинин Игорь Евгеньевич</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+
+    <script>
+        function changeOutput() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+            let inputC = document.getElementById('numberC');
+            let inputD = document.getElementById('numberD');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let c = parseInt(inputC.value);
+            let d = parseInt(inputD.value);
+            let result = a * 100 + b * 80 + c * 150 + d* 300;
+
+            let output = document.getElementById('output');
+            output.innerHTML = 'Общая цена: ' + result + ' р';
+        }
+        function changeClear() {
+            document.getElementById('numberA').value = '';
+            document.getElementById('numberB').value = '';
+            document.getElementById('numberC').value = '';
+            document.getElementById('numberD').value = '';
+            document.getElementById('output').remove();
+        }
+    </script>
+
+    <style>
+        .discount {
+            width: 240px;
+            border: 1px solid;
+            border-radius: 3px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        h1{
+            color: rgb(60, 2, 2);
+            font-family: Arial; 
+            margin: 0px;
+            position: relative;
+            font-size: 20px;
+            text-align: center;
+        }
+        .message {
+            cursor: pointer;
+            font-size: 14px;
+            color: rgb(8, 193, 193);
+            background-color: rgb(171, 132, 86);
+            width: 250px;
+            border: 3px solid;
+            border-radius: 5px;
+            margin: 20px;
+            padding: 20px;
+            display: inline-block;
+
+        }
+        #output {
+            border: 1px none;
+            width: 200px;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        НГТУ ФБ, Лабораторная работа 5
+    </header>
+
+    <main>
+        <div class="discount">
+            <h1>Корзина товаров</h1>
+            <label>Яблоки (100р/шт): <input type="number" value="" id="numberA" min="0" placeholder="Колличество яблок:"></label><br>
+            <label>Груши (80р/шт): <input type="number" value="" id="numberB" min="0" placeholder="Колличество груш:"></label><br>
+            <label>Апельсины (150р/шт): <input type="number" value="" id="numberC" min="0" placeholder="Колличество апельсин:"></label><br>
+            <label>Дыни (300р/шт): <input type="number" value="" id="numberD" min="0" placeholder="Колличество дынь:"></label><br>
+
+            <div>
+                <input type="button" value="Расчитать" onclick="changeOutput()">
+                <input type="button" value="Очистить" onclick="changeClear()">
+                
+            </div>
+            <div id="output"></div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Калинин Игорь Евгеньевич, ФБИ-23, 2 курс, 2024 
+    </footer>
+</body>
+</html>
