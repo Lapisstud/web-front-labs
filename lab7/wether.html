@@ -35,7 +35,8 @@
                     <p>8:00: ${morningTemperature} °C</p>
                     <p>12:00: ${noonTemperature} °C</p>
                     <p>20:00: ${eveningTemperature} °C</p>`;
-                document.body.appendChild(weatherElement);
+                const footer = document.querySelector('footer');
+                document.body.insertBefore(weatherElement, footer);
             }
     </script>
 
@@ -68,4 +69,5 @@
         &copy; Калинин Игорь, ФБИ-23, 2 курс, 2024 
     </footer>
 </body>
+
 </html>
