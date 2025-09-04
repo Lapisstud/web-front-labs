@@ -40,7 +40,8 @@
                 <p>${differenceMessage}</p>
                 <p>Источник данных: <a href="https://www.cbr-xml-daily.ru/">Центральный банк РФ</a></p>`
             ;
-            document.body.appendChild(euroRateElement);
+            const footer = document.querySelector('footer');
+            document.body.insertBefore(euroRateElement, footer);
         }
     </script>
 
@@ -71,4 +72,5 @@
         &copy; Калинин Игорь, ФБИ-23, 2 курс, 2024 
     </footer>
 </body>
+
 </html>
