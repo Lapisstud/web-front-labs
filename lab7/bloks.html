@@ -30,6 +30,7 @@
             newBlock.style.width = `${(i+10) * 20}px`;
             newBlock.style.border = '2px solid black';
             newBlock.style.margin = '10px';
+            newBlock.style.color = 'black';
             newBlock.innerText = `Блок № ${i + 1} :  ${2 * i**2}`;
             newBlock.innerHTML = `Блок № ${i+1}: 2*${i}<sup>${i ** 2}</sup> = ${2 * i**2}` ;
            main.appendChild(newBlock);
@@ -44,6 +45,7 @@
             newBlock.style.width = '200px';
             newBlock.style.height = '40px';
             newBlock.style.border = '1px solid';
+            newBlock.style.color = 'black';
             newBlock.innerHTML = `${i}`;
            main.appendChild(newBlock);
         }
@@ -133,4 +135,5 @@
         &copy; Калинин Игорь, ФБИ-23, 2 курс, 2024 
     </footer>
 </body>
+
 </html>
