@@ -182,6 +182,12 @@
             let dblclick = 'Прикрепи свою карету к звезде\nангл. Hitch your wagon to a star';
             alert(dblclick);
         }
+        function changeOutput(buttonNum, backColor, textColor) {
+            let output = document.getElementById('output');
+            output.innerHTML = 'Нажата кнопка ' + buttonNum;
+            output.style.backgroundColor = backColor;
+            output.style.color = textColor;
+        }
     </script>
     <style>
         header, footer{
@@ -198,8 +204,13 @@
             transition: transform 0.2s, box-shadow 0.2s;
             font-family: Arial, sans-serif;
             cursor: pointer;
-            display: inline;    
+            display: inline-block;    
         }
+        #output {
+            border: 1px solid;
+            width: 300px;
+            height: 40px;
+        } 
     </style>
 </head>
 <body>
@@ -217,6 +228,15 @@
         <div class="message" onclick="showDel()">Найти частное чисел</div>
         <div class="message" onclick="showMulty()">Найти результат возведения в степень</div>
         <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
+
+        <div>
+            <input type="button" onclick="changeOutput(1, 'red', 'yellow')" value="Кнопка 1">
+            <input type="button" onclick="changeOutput(2, 'black', 'lime')" value="Кнопка 2">
+            <input type="button" onclick="changeOutput(3, 'orange', 'azure')" value="Кнопка 3">
+            <input type="button" onclick="changeOutput(4, 'darkblue', 'pink')" value="Кнопка 4">
+        </div>
+
+        <div id="output"></div>
     </main>
     <footer ondblclick="dblclicking()">
         &copy; Калинин Игорь, ФБИ-32, 3 курс, 2025
