@@ -135,6 +135,45 @@
             let result = a / b;
             alert('Частное ' + a + ' и ' + b + ' равно ' + result);
         }
+        function showMulty() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+
+            if(b == 0 && a == 0) {
+                alert('Нельзя 0 возводить в степень 0!')
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+
+            if(isNaN(a)) {
+                alert('Введите число в первое поле');
+                inputA.focus();
+                inputA.select();
+                inputA.style.color = 'red';
+                inputA.style.borderColor = 'red';
+                return;
+            }
+            if(isNaN(b)) {
+                alert('Введите число в второе поле');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+            inputB.style.color = '';
+            inputB.style.borderColor = '';
+            inputA.style.color = '';
+            inputA.style.borderColor = '';
+            let result = a ** b;
+            alert('Результат возведения ' + a + ' в степень ' + b + ' равен ' + result);
+        }
         function showAuthor() {
             let author = 'Автор страницы:\nКалинин Игорь Евгеньевич';
             alert(author);
@@ -176,6 +215,7 @@
         <div class="message" onclick="showSub()">Найти разность чисел</div>
         <div class="message" onclick="showMult()">Найти произведение чисел</div>
         <div class="message" onclick="showDel()">Найти частное чисел</div>
+        <div class="message" onclick="showMulty()">Найти результат возведения в степень</div>
         <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
     </main>
     <footer ondblclick="dblclicking()">
