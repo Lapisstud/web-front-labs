@@ -7,6 +7,7 @@ body{
 
 main{
     padding: 10px;
+    margin: 10px 20px 38.4px;
 }
 
 footer{
@@ -15,6 +16,10 @@ footer{
     font-style: italic;
     padding: 10px;
     text-align: right;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 header{
