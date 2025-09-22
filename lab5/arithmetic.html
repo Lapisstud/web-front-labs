@@ -14,10 +14,21 @@
             let result = a + b;
             alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
         }
+        function showAuthor() {
+            let author = 'Автор страницы:\nКалинин Игорь Евгеньевич';
+            alert(author);
+        }
+        function dblclicking() {
+            let dblclick = 'Прикрепи свою карету к звезде\nангл. Hitch your wagon to a star';
+            alert(dblclick);
+        }
     </script>
     <style>
+        header, footer{
+            cursor: pointer;
+        }
         .message{
-             width: 300px;
+            width: 300px;
             border: 2px solid #4CAF50;
             border-radius: 10px;
             display: inline-block;
@@ -34,14 +45,14 @@
     </style>
 </head>
 <body>
-    <header>
+    <header onclick="showAuthor()">
         НГТУ, ФБ, Лабораторная работа 5
     </header>
     <main>
         <div class="message" onclick="showSum()">Сколько будет 5154+7891?</div>
-        <div class="message">Узнать, кто автор страницы</div>
+        <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
     </main>
-    <footer>
+    <footer ondblclick="dblclicking()">
         &copy; Калинин Игорь, ФБИ-32, 3 курс, 2025
     </footer>
 </body>
