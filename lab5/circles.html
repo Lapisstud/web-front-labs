@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калинин Игорь Евгеньевич. Лабораторная 5</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    
+    <script>
+        function hideCircle1() {
+             let circleOne = document.getElementById('circle1');
+             circleOne.style.scale = '0';
+             circleOne.style.transition = '1s';
+         }
+         function hideCircle2() {
+             let circleTwo =  document.getElementById('circle2');
+             circleTwo.style.scale = '0';
+             circleTwo.style.transition = '1s';
+         }
+         function hideCircle3() {
+             let circleThree =  document.getElementById('circle3');
+             circleThree.style.scale = '0';
+             circleThree.style.transition = '1s';
+         }
+         function hideCircle4() {
+             let circleFour =  document.getElementById('circle4');
+             circleFour.style.scale = '0';
+             circleFour.style.transition = '1s';
+         }
+         function hideCircle5() {
+             let circleFive =  document.getElementById('circle5');
+             circleFive.style.scale = '0';
+             circleFive.style.transition = '1s';
+         }
+         function hideCircle6() {
+             let circleSix =  document.getElementById('circle6');
+             circleSix.style.scale = '0';
+             circleSix.style.transition = '1s';
+         }
+         function hideCircle7() {
+             let circleSeven =  document.getElementById('circle7');
+             circleSeven.style.scale = '0';
+             circleSeven.style.transition = '1s';
+         }
+         function hideCircle8() {
+             let circleEight =  document.getElementById('circle8');
+             circleEight.style.scale = '0';
+             circleEight.style.transition = '1s';
+         }
+         function hideCircle9() {
+             let circleNine =  document.getElementById('circle9');
+             circleNine.style.scale = '0';
+             circleNine.style.transition = '1s';
+         }
+         function hideCircle10() {
+             let circleTen =  document.getElementById('circle10');
+             circleTen.style.scale = '0';
+             circleTen.style.transition = '1s';
+         }
+ 
+         function foundCircles() {
+             let circleOne = document.getElementById('circle1');
+             circleOne.style.scale = '1';
+             circleOne.style.transition = '1s';
+             let circleTwo =  document.getElementById('circle2');
+             circleTwo.style.scale = '1';
+             circleTwo.style.transition = '1s';
+             let circleThree =  document.getElementById('circle3');
+             circleThree.style.scale = '1';
+             circleThree.style.transition = '1s';
+             let circleFour =  document.getElementById('circle4');
+             circleFour.style.scale = '1';
+             circleFour.style.transition = '1s';
+             let circleFive =  document.getElementById('circle5');
+             circleFive.style.scale = '1';
+             circleFive.style.transition = '1s';
+             let circleSix =  document.getElementById('circle6');
+             circleSix.style.scale = '1';
+             circleSix.style.transition = '1s';
+             let circleSeven =  document.getElementById('circle7');
+             circleSeven.style.scale = '1';
+             circleSeven.style.transition = '1s';
+             let circleEight =  document.getElementById('circle8');
+             circleEight.style.scale = '1';
+             circleEight.style.transition = '1s';
+             let circleNine =  document.getElementById('circle9');
+             circleNine.style.scale = '1';
+             circleNine.style.transition = '1s';
+             let circleTen =  document.getElementById('circle10');
+             circleTen.style.scale = '1';
+             circleTen.style.transition = '1s';
+         }
+    </script>
+
+    <style>
+       .circle {
+            border-radius: 50%;
+            border: 2px solid rgb(224, 75, 75);
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            padding: 25px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        .circle1 {
+            background-color: transparent;
+            position: relative;
+            top: 10px;
+            left: 20px;
+        }
+
+        .circle2 {
+            background-color: rgb(187, 137, 137);
+            position: relative;
+            top: 100px;
+            left: 220px;
+        }
+
+        .circle3 {
+            background-color: rgb(71, 71, 137);
+            position: relative;
+            top: 200px;
+            left: 20px;
+        }
+
+        .circle4 {
+            background-color: rgb(186, 65, 186);
+            position: relative;
+            top: 400px;
+            left: 120px;
+        }
+
+        .circle5 {
+            background-color: rgb(202, 130, 130);
+            position: relative;
+            top: 20px;
+            left: 1220px;
+        }
+
+        .circle6 {
+            background-color: rgb(55, 137, 152);
+            position: relative;
+            top: 300px;
+            left: 10px;
+        }
+
+        .circle7 {
+            background-color: rgb(89, 209, 89);
+            position: relative;
+            top: 200px;
+            left: 800px;
+        }
+
+        .circle8 {
+            background-color: rgb(174, 131, 51);
+            position: relative;
+            top: 100px;
+            left: 1400px;
+        }
+
+        .circle9 {
+            background-color: rgb(182, 182, 92);
+            position: relative;
+            top: 15px;
+            left: 1500px;
+        }
+
+        .circle10 {
+            background-color: rgb(218, 141, 113);
+            position: relative;
+            top: -700px;
+            left: 1400px;
+        }
+    </style>    
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5
+    </header>
+    <main>
+        <input type="button" value="Перезапуск" onclick="foundCircles()">
+        <div class="circle circle1" id="circle1" onclick="hideCircle1()">1</div>
+        <div class="circle circle2" id="circle2" onclick="hideCircle2()">2</div>
+        <div class="circle circle3" id="circle3" onclick="hideCircle3()">3</div>
+        <div class="circle circle4" id="circle4" onclick="hideCircle4()">4</div>
+        <div class="circle circle5" id="circle5" onclick="hideCircle5()">5</div>
+        <div class="circle circle6" id="circle6" onclick="hideCircle6()">6</div>
+        <div class="circle circle7" id="circle7" onclick="hideCircle7()">7</div>
+        <div class="circle circle8" id="circle8" onclick="hideCircle8()">8</div>
+        <div class="circle circle9" id="circle9" onclick="hideCircle9()">9</div>
+        <div class="circle circle10" id="circle10" onclick="hideCircle10()">10</div>
+    </main>
+    <footer>
+        &copy; Калинин Игорь, ФБИ-32, 3 курс, 2025
+    </footer>
+</body>
+</html>
