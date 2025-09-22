@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калинин Игорь Евгеньевич. Лабораторная 4</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        .comic-container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .comic-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.5s ease;
+        }
+        
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid #333;
+            background-color: white;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 16px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .bubble-1 {
+            width: 60px;
+            height: 60px;
+            left: 270px;
+            top: 350px;
+            transition-delay: 0.1s;
+        }
+        
+        .bubble-2 {
+            width: 70px;
+            height: 70px;
+            left: 220px;
+            top: 300px;
+            transition-delay: 0.2s;
+        }
+        
+        .bubble-3 {
+            width: 80px;
+            height: 80px;
+            left: 170px;
+            top: 250px;
+            transition-delay: 0.3s;
+        }
+        
+        .bubble-4 {
+            width: 90px;
+            height: 90px;
+            left: 120px;
+            top: 200px;
+            transition-delay: 0.4s;
+        }
+        
+        .bubble-5 {
+            width: 120px;
+            height: 80px;
+            border-radius: 40px;
+            left: 70px;
+            top: 150px;
+            transition-delay: 0.5s;
+            font-weight: bold;
+        }
+        
+        .comic-container:hover .bubble {
+            opacity: 1;
+        }
+        
+        .comic-container:hover .comic-image {
+            filter: brightness(0.9);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 4
+    </header>
+    <main>
+         <div class="comic-container">
+            <img src="comic.jpg" alt="Комикс" class="comic-image">
+            <div class="bubble bubble-1"></div>
+            <div class="bubble bubble-2"></div>
+            <div class="bubble bubble-3"></div>
+            <div class="bubble bubble-4"></div>
+            <div class="bubble bubble-5">Осёл!</div>
+        </div>
+    </main>
+    <footer>
+        &copy; Калинин Игорь, ФБИ-32, 3 курс, 2025
+    </footer>
+</body>
+</html>
