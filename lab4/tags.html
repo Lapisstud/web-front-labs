@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калинин Игорь Евгеньевич. Лабораторная 4</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        h1 {
+            color: #4a4a4a;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .tag-cloud {
+            position: relative;
+            width: 90%;
+            height: 600px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            overflow: hidden;
+        }
+
+        .tag {
+            position: absolute;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .tag:hover {
+            transform: scale(1.4);
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .tag-1 { background-color: #ff6b6b; color: white; }
+        .tag-2 { background-color: #4ecdc4; color: white; }
+        .tag-3 { background-color: #ffe66d; color: #333; }
+        .tag-4 { background-color: #1a535c; color: white; }
+        .tag-5 { background-color: #ff9f1c; color: white; }
+        .tag-6 { background-color: #6a0572; color: white; }
+        .tag-7 { background-color: #2a9d8f; color: white; }
+        .tag-8 { background-color: #e76f51; color: white; }
+        .tag-9 { background-color: #264653; color: white; }
+        .tag-10 { background-color: #e9c46a; color: #333; }
+        .tag-11 { background-color: #2a9d8f; color: white; }
+        .tag-12 { background-color: #f4a261; color: white; }
+        .tag-13 { background-color: #e76f51; color: white; }
+        .tag-14 { background-color: #8ac926; color: white; }
+        .tag-15 { background-color: #1982c4; color: white; }
+
+        .size-small { font-size: 14px; }
+        .size-medium { font-size: 18px; }
+        .size-large { font-size: 22px; }
+        .size-xlarge { font-size: 26px; }
+
+        .rotate-neg-10 { transform: rotate(-10deg); }
+        .rotate-neg-5 { transform: rotate(-5deg); }
+        .rotate-5 { transform: rotate(5deg); }
+        .rotate-10 { transform: rotate(10deg); }
+        .rotate-15 { transform: rotate(15deg); }
+        .rotate-20 { transform: rotate(20deg); }
+        .rotate-neg-15 { transform: rotate(-15deg); }
+        .rotate-neg-20 { transform: rotate(-20deg); }
+
+        .pos-1 { top: 15%; left: 10%; }
+        .pos-2 { top: 25%; left: 70%; }
+        .pos-3 { top: 50%; left: 15%; }
+        .pos-4 { top: 30%; left: 45%; }
+        .pos-5 { top: 60%; left: 65%; }
+        .pos-6 { top: 40%; left: 80%; }
+        .pos-7 { top: 70%; left: 35%; }
+        .pos-8 { top: 20%; left: 55%; }
+        .pos-9 { top: 80%; left: 70%; }
+        .pos-10 { top: 25%; left: 20%; }
+        .pos-11 { top: 55%; left: 85%; }
+        .pos-12 { top: 75%; left: 25%; }
+        .pos-13 { top: 35%; left: 65%; }
+        .pos-14 { top: 65%; left: 45%; }
+        .pos-15 { top: 85%; left: 80%; }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 4
+    </header>
+    <main>
+        <div class="tag-cloud">
+            <a href="#" class="tag tag-1 size-large rotate-neg-10 pos-1">HTML</a>
+            <a href="#" class="tag tag-2 size-xlarge rotate-10 pos-2">CSS</a>
+            <a href="#" class="tag tag-3 size-medium rotate-5 pos-3">JavaScript</a>
+            <a href="#" class="tag tag-4 size-large rotate-neg-5 pos-4">React</a>
+            <a href="#" class="tag tag-5 size-medium rotate-15 pos-5">Node.js</a>
+            <a href="#" class="tag tag-6 size-small rotate-neg-15 pos-6">Vue</a>
+            <a href="#" class="tag tag-7 size-xlarge rotate-20 pos-7">Angular</a>
+            <a href="#" class="tag tag-8 size-medium rotate-neg-20 pos-8">TypeScript</a>
+            <a href="#" class="tag tag-9 size-small rotate-5 pos-9">Python</a>
+            <a href="#" class="tag tag-10 size-large rotate-10 pos-10">Django</a>
+            <a href="#" class="tag tag-11 size-medium rotate-neg-10 pos-11">PHP</a>
+            <a href="#" class="tag tag-12 size-small rotate-15 pos-12">Laravel</a>
+            <a href="#" class="tag tag-13 size-xlarge rotate-neg-5 pos-13">MySQL</a>
+            <a href="#" class="tag tag-14 size-medium rotate-20 pos-14">MongoDB</a>
+            <a href="#" class="tag tag-15 size-large rotate-neg-15 pos-15">Git</a>
+        </div>
+    </main>
+    <footer>
+        &copy; Калинин Игорь, ФБИ-32, 3 курс, 2025
+    </footer>
+</body>
+</html>
