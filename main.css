@@ -1,0 +1,28 @@
+body{
+    background-color: azure;
+    color: darkblue;
+    font-family: Arial;
+    margin: 0px;
+}
+
+main{
+    padding: 10px;
+}
+
+footer{
+    background-color: black;
+    color: greenyellow;
+    font-style: italic;
+    padding: 10px;
+    text-align: right;
+}
+
+header{
+    background-color: black;
+    color: greenyellow;
+    padding: 10px;
+}
+
+a{
+    text-decoration: none;
+}
