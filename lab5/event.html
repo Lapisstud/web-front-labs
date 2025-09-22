@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калинин Игорь Евгеньевич. Лабораторная 5</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        #block {
+            width: 300px;
+            height: 200px;
+            border: 2px solid #333;
+            background-color: #fff;
+            cursor: crosshair;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        #coordinates {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        
+        #keys-info {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .key-active {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .ctrl-active {
+            color: #e74c3c;
+        }
+        
+        .alt-active {
+            background-color: #e8f4fd;
+            border-color: #3498db;
+        }
+        
+        .shift-active {
+            border-width: 4px;
+            border-color: #2ecc71;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+
+    <script>
+        function showCoords(event) {
+            const x = event.offsetX;
+            const y = event.offsetY;
+
+            document.getElementById('x-coord').textContent = x;
+            document.getElementById('y-coord').textContent = y;
+
+            const ctrlPressed = event.ctrlKey;
+            const altPressed = event.altKey;
+            const shiftPressed = event.shiftKey;
+
+            let keysText = '';
+            if (ctrlPressed) keysText += 'Ctrl ';
+            if (altPressed) keysText += 'Alt ';
+            if (shiftPressed) keysText += 'Shift ';
+            if (keysText === '') keysText = 'нет';
+            
+            document.getElementById('keys-text').textContent = keysText;
+
+            const block = document.getElementById('block');
+            const coordinates = document.getElementById('coordinates');
+
+            block.classList.remove('alt-active', 'shift-active');
+            coordinates.classList.remove('ctrl-active');
+
+            if (ctrlPressed) {
+                coordinates.classList.add('ctrl-active');
+            }
+            
+            if (altPressed) {
+                block.classList.add('alt-active');
+            }
+            
+            if (shiftPressed) {
+                block.classList.add('shift-active');
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5
+    </header>
+    <main>
+        <div id="block" onmousemove="showCoords(event)">
+        <div id="coordinates">
+            Координаты мыши:<br>
+            X: <span id="x-coord">0</span><br>
+            Y: <span id="y-coord">0</span>
+        </div>
+        <div id="keys-info">
+            Нажатые клавиши: <span id="keys-text">нет</span>
+        </div>
+    </div>
+    </main>
+    <footer>
+        &copy; Калинин Игорь, ФБИ-32, 3 курс, 2025
+    </footer>
+</body>
+</html>
