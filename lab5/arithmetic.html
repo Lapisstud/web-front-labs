@@ -14,6 +14,26 @@
 
             let a = parseInt(inputA.value);
             let b = parseInt(inputB.value);
+            if(isNaN(a)) {
+                alert('Введите число в первое поле');
+                inputA.focus();
+                inputA.select();
+                inputA.style.color = 'red';
+                inputA.style.borderColor = 'red';
+                return;
+            }
+            if(isNaN(b)) {
+                alert('Введите число в второе поле');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+            inputB.style.color = '';
+            inputB.style.borderColor = '';
+            inputA.style.color = '';
+            inputA.style.borderColor = '';
             let result = a + b;
             alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
         }
@@ -23,6 +43,26 @@
 
             let a = parseInt(inputA.value);
             let b = parseInt(inputB.value);
+            if(isNaN(a)) {
+                alert('Введите число в первое поле');
+                inputA.focus();
+                inputA.select();
+                inputA.style.color = 'red';
+                inputA.style.borderColor = 'red';
+                return;
+            }
+            if(isNaN(b)) {
+                alert('Введите число в второе поле');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+            inputB.style.color = '';
+            inputB.style.borderColor = '';
+            inputA.style.color = '';
+            inputA.style.borderColor = '';
             let result = a - b;
             alert('Разность ' + a + ' и ' + b + ' равна ' + result);
         }
@@ -32,8 +72,68 @@
 
             let a = parseInt(inputA.value);
             let b = parseInt(inputB.value);
+            if(isNaN(a)) {
+                alert('Введите число в первое поле');
+                inputA.focus();
+                inputA.select();
+                inputA.style.color = 'red';
+                inputA.style.borderColor = 'red';
+                return;
+            }
+            if(isNaN(b)) {
+                alert('Введите число в второе поле');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+            inputB.style.color = '';
+            inputB.style.borderColor = '';
+            inputA.style.color = '';
+            inputA.style.borderColor = '';
             let result = a * b;
-            alert('Произведение ' + a + ' и ' + b + ' равна ' + result);
+            alert('Произведение ' + a + ' и ' + b + ' равно ' + result);
+        }
+        function showDel() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+
+            if(b == 0) {
+                alert('На 0 делить нельзя!')
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+
+            if(isNaN(a)) {
+                alert('Введите число в первое поле');
+                inputA.focus();
+                inputA.select();
+                inputA.style.color = 'red';
+                inputA.style.borderColor = 'red';
+                return;
+            }
+            if(isNaN(b)) {
+                alert('Введите число в второе поле');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+            inputB.style.color = '';
+            inputB.style.borderColor = '';
+            inputA.style.color = '';
+            inputA.style.borderColor = '';
+
+            let result = a / b;
+            alert('Частное ' + a + ' и ' + b + ' равно ' + result);
         }
         function showAuthor() {
             let author = 'Автор страницы:\nКалинин Игорь Евгеньевич';
@@ -75,6 +175,7 @@
         <div class="message" onclick="showSum()">Найти сумму чисел</div>
         <div class="message" onclick="showSub()">Найти разность чисел</div>
         <div class="message" onclick="showMult()">Найти произведение чисел</div>
+        <div class="message" onclick="showDel()">Найти частное чисел</div>
         <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
     </main>
     <footer ondblclick="dblclicking()">
