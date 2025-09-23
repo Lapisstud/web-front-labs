@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа 8: Vue.js и Bootstrap</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .spinner-border-sm {
+            width: 1rem;
+            height: 1rem;
+        }
+        .calculator {
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-primary text-white p-3 mb-4 rounded">
+        <h1>НГТУ ФБ, Лабораторная работа 8</h1>
+    </header>
+
+    <main id="app">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">{{ message }}</h2>
+                <p class="card-text" v-bind:title="messageRus">Наведите курсор для русского приветствия</p>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Счётчик: {{ counter }}</h3>
+                <button @click="incCounter" class="btn btn-success me-2" v-if="counter < 10">++</button>
+                <button @click="decCounter" class="btn btn-danger" v-if="counter > 0">--</button>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Информация о пользователе</h3>
+                <p>Имя: {{ user.name }}</p>
+                <p>Возраст: {{ user.age }}</p>
+                <p>Телефон: {{ user.tel }}</p>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Цветы (список)</h3>
+                <ul class="list-group">
+                    <li v-for="(flower, id) in flowers" :key="id" class="list-group-item d-flex justify-content-between align-items-center">
+                        <span v-if="flower !== null">{{ flower }}</span>
+                        <span v-else class="text-muted">Загрузка...</span>
+                        
+                        <button @click="edit(id, flower)" class="btn btn-sm btn-primary" v-if="flower !== null">
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                        <div class="spinner-border spinner-border-sm text-primary" role="status" v-else>
+                            <span class="visually-hidden">Загрузка...</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Цветы (таблица)</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Название</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(flower, id) in flowers" :key="id">
+                            <td>{{ id + 1 }}</td>
+                            <td>
+                                <i class="bi bi-flower1 text-success me-2"></i>
+                                <span v-if="flower !== null">{{ flower }}</span>
+                                <span v-else class="text-muted">Загрузка...</span>
+                            </td>
+                            <td>
+                                <button @click="edit(id, flower)" class="btn btn-sm btn-primary" v-if="flower !== null">
+                                    <i class="bi bi-pencil"></i> Изменить
+                                </button>
+                                <button @click="removeFlower(id)" class="btn btn-sm btn-danger ms-1">
+                                    <i class="bi bi-trash"></i> Удалить
+                                </button>
+                                <div class="spinner-border spinner-border-sm text-primary" role="status" v-else>
+                                    <span class="visually-hidden">Загрузка...</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card mb-4 calculator">
+            <div class="card-body">
+                <h3 class="card-title">Калькулятор</h3>
+                <div class="d-flex align-items-center mb-3">
+                    <input type="number" v-model.number="a" class="form-control me-2">
+                    <span class="me-2">+</span>
+                    <input type="number" v-model.number="b" class="form-control me-2">
+                    <button @click="sum" class="btn btn-primary me-2">=</button>
+                    <span class="badge bg-success fs-6">{{ result }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Дополнительные функции</h3>
+                <div class="mb-3">
+                    <input v-model="newFlower" @keyup.enter="addFlower" class="form-control me-2 d-inline-block" placeholder="Новый цветок" style="width: 200px;">
+                    <button @click="addFlower" class="btn btn-success">
+                        <i class="bi bi-plus"></i> Добавить цветок
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white p-3 mt-4 rounded text-center">
+        &copy; Калинин Игорь Евгеньевич, ФБИ-32, 2 курс, 2025
+    </footer>
+
+    <script>
+        const { createApp } = Vue;
+        
+        createApp({
+            data() {
+                return {
+                    message: 'Hello!',
+                    messageRus: 'Привет!',
+                    counter: 1,
+                    user: {
+                        name: 'Игорь',
+                        age: '20',
+                        tel: '222-33-44'
+                    },
+                    flowers: ['роза', 'тюльпан', 'маргаритка', 'георгин', 'одуванчик'],
+                    a: 1,
+                    b: 10,
+                    result: '',
+                    newFlower: ''
+                }
+            },
+            methods: {
+                incCounter() {
+                    this.counter++;
+                },
+                decCounter() {
+                    this.counter--;
+                },
+                edit(id, flower) {
+                    let newName = prompt('Введите имя цветка:', flower);
+                    if (newName !== null) {
+                        this.flowers[id] = null;
+                        
+                        setTimeout(() => {
+                            this.flowers[id] = newName;
+                        }, 2000);
+                    }
+                },
+                addFlower() {
+                    if (this.newFlower.trim() !== '') {
+                        this.flowers.push(this.newFlower);
+                        this.newFlower = '';
+                    }
+                },
+                // removeFlower(index) {
+                //     this.flowers.splice(index, 1);
+                // },
+                removeFlower(index) {
+                    if (confirm(`Вы уверены, что хотите удалить "${this.flowers[index]}"?`)) {
+                        this.flowers.splice(index, 1);
+                    }
+                },
+                clearAllFlowers() {
+                    if (confirm('Вы уверены, что хотите удалить все цветы?')) {
+                        this.flowers = [];
+                    }
+                },
+                sum() {
+                    this.result = this.a + this.b;
+                }
+            }
+        }).mount('#app');
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
