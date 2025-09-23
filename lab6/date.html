@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калинин Игорь Евгеньевич. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        .date-container {
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .date-item {
+            margin: 15px 0;
+            padding: 10px;
+            border-left: 4px solid #4CAF50;
+            background-color: white;
+            border-radius: 0 5px 5px 0;
+        }
+        .locale-name {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .date-value {
+            font-family: 'Courier New', monospace;
+            color: #27ae60;
+            font-size: 1.1em;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #current-date {
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 6
+    </header>
+    <main>
+        <h1>Текущая дата и время</h1>
+        
+        <div class="date-container">
+            <h2>Текущая дата (русская локаль):</h2>
+            <div id="current-date"></div>
+        </div>
+        
+        <div class="date-container">
+            <h2>Дата и время в разных локалях:</h2>
+            <div id="other-dates"></div>
+        </div>
+    </main>
+    <footer>
+        &copy; Калинин Игорь, ФБИ-32, 3 курс, 2025
+    </footer>
+    
+    <script>
+        function showDate() {
+            const out = document.getElementById('current-date');
+            
+            const today = new Date();
+            
+            out.textContent = today.toLocaleString('ru-RU');
+        }
+        
+        function showOtherDates() {
+            const container = document.getElementById('other-dates');
+            const today = new Date();
+            
+            const locales = [
+                { code: 'en-US', name: 'Американский английский (США)' },
+                { code: 'en-GB', name: 'Британский английский (Великобритания)' },
+                { code: 'de-DE', name: 'Немецкий (Германия)' },
+                { code: 'fr-FR', name: 'Французский (Франция)' },
+                { code: 'ja-JP', name: 'Японский (Япония)' },
+                { code: 'zh-CN', name: 'Китайский (Китай)' },
+                { code: 'es-ES', name: 'Испанский (Испания)' },
+                { code: 'ar-SA', name: 'Арабский (Саудовская Аравия)' }
+            ];
+            
+            container.innerHTML = '';
+            
+            locales.forEach(locale => {
+                const dateElement = document.createElement('div');
+                dateElement.className = 'date-item';
+                
+                const localeName = document.createElement('div');
+                localeName.className = 'locale-name';
+                localeName.textContent = locale.name + ' (' + locale.code + ')';
+                
+                const dateValue = document.createElement('div');
+                dateValue.className = 'date-value';
+                dateValue.textContent = today.toLocaleString(locale.code);
+                
+                dateElement.appendChild(localeName);
+                dateElement.appendChild(dateValue);
+                
+                container.appendChild(dateElement);
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            showDate();
+            showOtherDates();
+        });
+    </script>
+</body>
+</html>
