@@ -7,16 +7,23 @@
     <link rel="stylesheet" href="../main.css">
     <link rel="icon" href="../favicon-16x16.png">
     <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function showMultipleTable() {
+            let tbl = document.getElementById('mtable');
+            tbl.innerHTML = '<h1>Таблица умножения</h1>';
+            for(i = 1; i <= 10; i++) {
+                let s = `<div>${i} * 7 = ${(i*7)}</div>`;
+                tbl.innerHTML += s;
+            }
+        }
+    </script>
 </head>
-<body>
+<body onload="showMultipleTable()">
     <header>
         НГТУ, ФБ, Лабораторная работа 6
     </header>
     <main>
-         <h1>Лабораторная работа 6</h1>
-         <ul>
-            <li><a href="mtable.html">Таблица умножения</a></li>
-         </ul>
+        <div id="mtable"></div>
     </main>
     <footer>
         &copy; Калинин Игорь, ФБИ-32, 3 курс, 2025
