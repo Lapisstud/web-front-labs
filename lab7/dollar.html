@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калинин Игорь Евгеньевич. Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .detail {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+    </header>
+    
+    <main>
+        <h1>Курс доллара за 10 дней</h1>
+        
+        <button id="load-rates">Показать курс доллара</button>
+        
+        <table id="rates-table">
+            <thead>
+                <tr>
+                    <th>День</th>
+                    <th>Курс, руб.</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        
+        <div id="detail" class="detail"></div>
+    </main>
+    
+    <footer>
+        &copy; Калинин Игорь, ФБИ-32, 3 курс, 2025
+    </footer>
+    
+    <script>
+        const exchange = [84.05, 84.10, 84.15, 84.20, 84.25, 84.30, 84.35, 84.40, 84.45, 84.55];
+        
+        function loadExchangeRates() {
+            const table = document.getElementById('rates-table');
+            const tbody = table.getElementsByTagName('tbody')[0];
+            
+            tbody.innerHTML = '';
+            
+            let total = 0;
+            
+            for (let i = 0; i < exchange.length; i++) {
+                const row = document.createElement('tr');
+                
+                const dayCell = document.createElement('td');
+                dayCell.textContent = i + 1;
+                
+                const rateCell = document.createElement('td');
+                rateCell.textContent = exchange[i].toFixed(2);
+                
+                row.appendChild(dayCell);
+                row.appendChild(rateCell);
+                
+                tbody.appendChild(row);
+                
+                total += exchange[i];
+            }
+            
+            const average = total / exchange.length;
+            
+            const detailElement = document.getElementById('detail');
+            detailElement.textContent = `Средний курс доллара за ${exchange.length} дней: ${average.toFixed(2)} руб.`;
+            
+            const button = document.getElementById('load-rates');
+            button.disabled = true;
+            button.textContent = 'Данные загружены';
+        }
+        document.getElementById('load-rates').addEventListener('click', loadExchangeRates);
+    </script>
+</body>
+</html>
