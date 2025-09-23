@@ -1,0 +1,204 @@
+html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калинин Игорь Евгеньевич. Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .positive {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        
+        .negative {
+            color: #c62828;
+            font-weight: bold;
+        }
+        
+        .summary {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .summary-item {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+    </header>
+    
+    <main>
+        <h1>Котировки акций ПАО "РусГидро"</h1>
+        
+        <button id="load-quotes">Показать котировки акций</button>
+        
+        <table id="quotes-table">
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Цена акций, руб.</th>
+                    <th>Разница, руб.</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        
+        <div id="summary" class="summary">
+        </div>
+    </main>
+    
+    <footer>
+        &copy; Калинин Игорь, ФБИ-32, 3 курс, 2025
+    </footer>
+    
+    <script>
+        const dates = [
+            '2025-09-01', '2025-09-02', '2025-09-03', '2025-09-04', '2025-09-07',
+            '2025-09-08', '2025-09-09', '2025-09-10', '2025-09-11', '2025-09-14'
+        ];
+        
+        const prices = [0.75, 0.76, 0.74, 0.77, 0.78, 0.79, 0.81, 0.80, 0.82, 0.83];
+        
+        function loadStockQuotes() {
+            const table = document.getElementById('quotes-table');
+            const tbody = table.getElementsByTagName('tbody')[0];
+            
+            tbody.innerHTML = '';
+            
+            let total = 0;
+            let minPrice = prices[0];
+            let maxPrice = prices[0];
+            
+            for (let i = 0; i < prices.length; i++) {
+                const row = document.createElement('tr');
+                
+                const dateCell = document.createElement('td');
+                dateCell.textContent = formatDate(dates[i]);
+                
+                const priceCell = document.createElement('td');
+                priceCell.textContent = prices[i].toFixed(2);
+                
+                const diffCell = document.createElement('td');
+                
+                if (i > 0) {
+                    const difference = prices[i] - prices[i-1];
+                    diffCell.textContent = difference.toFixed(2);
+                    
+                    if (difference > 0) {
+                        diffCell.className = 'positive';
+                    } else if (difference < 0) {
+                        diffCell.className = 'negative';
+                    }
+                } else {
+                    diffCell.textContent = '-';
+                }
+                
+                row.appendChild(dateCell);
+                row.appendChild(priceCell);
+                row.appendChild(diffCell);
+                
+                tbody.appendChild(row);
+                
+                total += prices[i];
+                if (prices[i] < minPrice) minPrice = prices[i];
+                if (prices[i] > maxPrice) maxPrice = prices[i];
+            }
+            
+            const average = total / prices.length;
+            
+            const summaryElement = document.getElementById('summary');
+            summaryElement.innerHTML = `
+                <h3>Сводная информация:</h3>
+                <div class="summary-item">Средняя цена акции: <strong>${average.toFixed(2)} руб.</strong></div>
+                <div class="summary-item">Минимальная цена: <strong>${minPrice.toFixed(2)} руб.</strong></div>
+                <div class="summary-item">Максимальная цена: <strong>${maxPrice.toFixed(2)} руб.</strong></div>
+            `;
+            
+            const button = document.getElementById('load-quotes');
+            button.disabled = true;
+            button.textContent = 'Данные загружены';
+        }
+        
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('ru-RU');
+        }
+        
+        document.getElementById('load-quotes').addEventListener('click', loadStockQuotes);
+    </script>
+</body>
+</html>
