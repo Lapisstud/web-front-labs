@@ -46,6 +46,39 @@
             border-radius: 5px;
             margin: 20px 0;
         }
+        
+        header {
+            transition: color 0.5s ease-in-out;
+        }
+        
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .controls button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .controls button:hover {
+            background-color: #45a049;
+        }
+        
+        .controls button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
@@ -53,6 +86,11 @@
         НГТУ, ФБ, Лабораторная работа 6
     </header>
     <main>
+        <div class="controls">
+            <button id="start-btn">Старт</button>
+            <button id="stop-btn" disabled>Стоп</button>
+        </div>
+        
         <h1>Текущая дата и время</h1>
         
         <div class="date-container">
@@ -70,6 +108,8 @@
     </footer>
     
     <script>
+        let colorInterval;
+        
         function showDate() {
             const out = document.getElementById('current-date');
             
@@ -114,9 +154,38 @@
             });
         }
         
+        function changeColor() {
+            const header = document.getElementsByTagName('header')[0];
+            
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            
+            header.style.color = `rgb(${r}, ${g}, ${b})`;
+        }
+        
+        function startAnimation() {
+            changeColor();
+            
+            colorInterval = setInterval(changeColor, 1500);
+            
+            document.getElementById('start-btn').disabled = true;
+            document.getElementById('stop-btn').disabled = false;
+        }
+        
+        function stopAnimation() {
+            clearInterval(colorInterval);
+            
+            document.getElementById('start-btn').disabled = false;
+            document.getElementById('stop-btn').disabled = true;
+        }
+        
         document.addEventListener('DOMContentLoaded', function() {
             showDate();
             showOtherDates();
+            
+            document.getElementById('start-btn').addEventListener('click', startAnimation);
+            document.getElementById('stop-btn').addEventListener('click', stopAnimation);
         });
     </script>
 </body>
