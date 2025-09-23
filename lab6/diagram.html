@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калинин Игорь Евгеньевич. Лабораторная 5</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #diag {
+            display: flex;
+            align-items: flex-end;
+            height: 400px;
+            width: 100%;
+            max-width: 800px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: white;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .bar {
+            flex: 1;
+            margin: 0 5px;
+            background-color: #4CAF50;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            font-weight: bold;
+            color: #333;
+            min-width: 30px;
+        }
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+    <script>
+        let data = [15, 30, 45, 60, 75, 90, 105, 120, 135, 150];
+        let colors = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', 
+                     '#FF9F40', '#8AC926', '#1982C4', '#6A4C93', '#118AB2'];
+        
+        function createBars() {
+            const diag = document.getElementById('diag');
+            diag.innerHTML = '';
+            
+            for (let i = 0; i < data.length; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'bar';
+                bar.textContent = data[i]; 
+                diag.appendChild(bar);
+            }
+        }
+
+        function showVerticalDiagram() {
+            createBars();
+            const diag = document.getElementById('diag');
+            const bars = document.getElementsByClassName('bar');
+            
+            diag.style.flexDirection = 'row';
+            diag.style.alignItems = 'flex-end';
+            
+            const diagHeight = diag.clientHeight;
+            const maxValue = Math.max(...data);
+            const coefficient = (diagHeight * 0.8) / maxValue;  // 80% высоты для столбцов
+            
+            for (let i = 0; i < bars.length; i++) {
+                // Устанавливаем ВЫСОТУ пропорционально данным
+                bars[i].style.height = (data[i] * coefficient) + 'px';
+                // Ширину делаем фиксированной или пропорциональной количеству столбцов
+                bars[i].style.width = (100 / data.length) + '%';
+                bars[i].style.backgroundColor = colors[i];
+                bars[i].style.alignItems = 'center';
+            }
+        }
+
+        function showHorizontalDiagram() {
+            createBars();
+            const diag = document.getElementById('diag');
+            const bars = document.getElementsByClassName('bar');
+            
+            diag.style.flexDirection = 'column';
+            diag.style.alignItems = 'flex-start';
+            
+            const diagWidth = diag.clientWidth;
+            const maxValue = Math.max(...data);
+            const coefficient = (diagWidth * 0.8) / maxValue;  // 80% ширины для столбцов
+            
+            for (let i = 0; i < bars.length; i++) {
+                // Устанавливаем ШИРИНУ пропорционально данным
+                bars[i].style.width = (data[i] * coefficient) + 'px';
+                // Высоту делаем фиксированной или пропорциональной количеству столбцов
+                bars[i].style.height = (100 / data.length) + '%';
+                bars[i].style.backgroundColor = colors[i];
+                bars[i].style.justifyContent = 'flex-start';
+                bars[i].style.paddingLeft = '10px';
+            }
+        }
+
+        function randomizeData() {
+            data = [];
+            for (let i = 0; i < 10; i++) {
+                data.push(Math.floor(Math.random() * 150) + 10);
+            }
+            showVerticalDiagram();
+        }
+        
+        window.onload = showVerticalDiagram;
+    </script>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 6
+    </header>
+    <main>
+        <div class="controls">
+            <button onclick="showVerticalDiagram()">Вертикальная диаграмма</button>
+            <button onclick="showHorizontalDiagram()">Горизонтальная диаграмма</button>
+            <button onclick="randomizeData()">Случайные данные</button>
+        </div>
+        <div id="diag">
+        </div>
+    </main>
+    <footer>
+        &copy; Калинин Игорь, ФБИ-32, 3 курс, 2025
+    </footer>
+</body>
+</html>
