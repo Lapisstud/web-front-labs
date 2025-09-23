@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Калинин Игорь Евгеньевич. Лабораторная 5</title>
+    <title>Калинин Игорь Евгеньевич. Лабораторная 6</title>
     <link rel="stylesheet" href="../main.css">
     <link rel="icon" href="../favicon-16x16.png">
     <link rel="icon" href="../favicon-32x32.png">
@@ -85,12 +85,10 @@
             
             const diagHeight = diag.clientHeight;
             const maxValue = Math.max(...data);
-            const coefficient = (diagHeight * 0.8) / maxValue;  // 80% высоты для столбцов
+            const coefficient = (diagHeight * 0.8) / maxValue;
             
             for (let i = 0; i < bars.length; i++) {
-                // Устанавливаем ВЫСОТУ пропорционально данным
                 bars[i].style.height = (data[i] * coefficient) + 'px';
-                // Ширину делаем фиксированной или пропорциональной количеству столбцов
                 bars[i].style.width = (100 / data.length) + '%';
                 bars[i].style.backgroundColor = colors[i];
                 bars[i].style.alignItems = 'center';
@@ -107,12 +105,10 @@
             
             const diagWidth = diag.clientWidth;
             const maxValue = Math.max(...data);
-            const coefficient = (diagWidth * 0.8) / maxValue;  // 80% ширины для столбцов
+            const coefficient = (diagWidth * 0.8) / maxValue;
             
             for (let i = 0; i < bars.length; i++) {
-                // Устанавливаем ШИРИНУ пропорционально данным
                 bars[i].style.width = (data[i] * coefficient) + 'px';
-                // Высоту делаем фиксированной или пропорциональной количеству столбцов
                 bars[i].style.height = (100 / data.length) + '%';
                 bars[i].style.backgroundColor = colors[i];
                 bars[i].style.justifyContent = 'flex-start';
