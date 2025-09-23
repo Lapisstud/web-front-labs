@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калинин Игорь Евгеньевич. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        .block-container {
+            margin: 20px 0;
+        }
+        
+        .block {
+            width: 200px;
+            height: 100px;
+            border: 2px solid #4CAF50;
+            background-color: #f9f9f9;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .block:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .add-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .add-button:hover {
+            background-color: #45a049;
+        }
+        
+        .block-counter {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 6
+    </header>
+    
+    <main>
+        <h1>Добавление блоков на страницу</h1>
+        
+        <button class="add-button" id="add-block-btn">Добавить блок</button>
+        <div class="block-counter" id="block-counter">Блоков на странице: 0</div>
+        
+        <div class="block-container" id="blocks-container">
+        </div>
+    </main>
+    
+    <footer>
+        &copy; Калинин Игорь, ФБИ-32, 3 курс, 2025
+    </footer>
+    
+    <script>
+        let blockCount = 0;
+        
+        function addNewBlock() {
+            const container = document.getElementById('blocks-container');
+            
+            const newBlock = document.createElement('div');
+            newBlock.className = 'block';
+            blockCount++;
+            newBlock.textContent = `Блок №${blockCount}`;
+            
+            container.appendChild(newBlock);
+            
+            document.getElementById('block-counter').textContent = `Блоков на странице: ${blockCount}`;
+        }
+        
+        document.getElementById('add-block-btn').addEventListener('click', addNewBlock);
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                addNewBlock();
+            }
+        });
+    </script>
+</body>
+</html>
