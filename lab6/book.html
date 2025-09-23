@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калинин Игорь Евгеньевич. Список книг</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        .book {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+        .book:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .book h2 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .book p {
+            margin: 5px 0;
+        }
+        .price {
+            font-weight: bold;
+            color: #27ae60;
+        }
+        .bestseller {
+            border-left: 5px solid #f39c12;
+            background-color: #fff9e6;
+        }
+        .bestseller-badge {
+            display: inline-block;
+            background-color: #f39c12;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+        .out-of-stock {
+            opacity: 0.6;
+            background-color: #f5f5f5;
+        }
+        .out-of-stock-label {
+            color: #e74c3c;
+            font-style: italic;
+        }
+        .book-info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .book-details {
+            flex: 1;
+            min-width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 6
+    </header>
+    <main>
+        <h1>Список книг</h1>
+        <div id="booklist"></div>
+    </main>
+    <footer>
+        &copy; Калинин Игорь, ФБИ-32, 3 курс, 2025
+    </footer>
+    
+    <script src="books.js"></script>
+    <script>
+        function showBooks() {
+            const booklist = document.getElementById('booklist');
+            booklist.innerHTML = '';
+            
+            books.forEach(book => {
+                const bookElement = document.createElement('div');
+                bookElement.className = 'book';
+                
+                if (book.bestseller) {
+                    bookElement.classList.add('bestseller');
+                }
+                if (!book.available) {
+                    bookElement.classList.add('out-of-stock');
+                }
+                
+                bookElement.innerHTML = `
+                    <div class="book-info">
+                        <div class="book-details">
+                            <h2>${book.title} ${book.bestseller ? '<span class="bestseller-badge">Бестселлер</span>' : ''}</h2>
+                            <p><strong>Автор:</strong> ${book.author}</p>
+                            <p><strong>Год издания:</strong> ${book.year}</p>
+                            <p><strong>Жанр:</strong> ${book.genre}</p>
+                            <p><strong>Страниц:</strong> ${book.pages}</p>
+                            <p class="price"><strong>Цена:</strong> ${book.price} руб.</p>
+                            ${!book.available ? '<p class="out-of-stock-label">Нет в наличии</p>' : ''}
+                        </div>
+                    </div>
+                `;
+                
+                booklist.appendChild(bookElement);
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', showBooks);
+    </script>
+</body>
+</html>
