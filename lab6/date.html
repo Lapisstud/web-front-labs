@@ -79,6 +79,55 @@
             background-color: #cccccc;
             cursor: not-allowed;
         }
+        
+        .time-controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .time-controls button {
+            background-color: #2196F3;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .time-controls button:hover {
+            background-color: #0b7dda;
+        }
+        
+        .time-controls button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+            background-color: #ccc;
+        }
+        
+        .status-active {
+            background-color: #4CAF50;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
     </style>
 </head>
 <body>
@@ -87,8 +136,14 @@
     </header>
     <main>
         <div class="controls">
-            <button id="start-btn">Старт</button>
-            <button id="stop-btn" disabled>Стоп</button>
+            <button id="start-btn">Старт (анимация)</button>
+            <button id="stop-btn" disabled>Стоп (анимация)</button>
+        </div>
+        
+        <div class="time-controls">
+            <span id="time-status" class="status-indicator"></span>
+            <button id="update-time-btn">Обновлять время</button>
+            <button id="stop-time-btn" disabled>Остановить обновление</button>
         </div>
         
         <h1>Текущая дата и время</h1>
@@ -109,12 +164,11 @@
     
     <script>
         let colorInterval;
+        let timeInterval;
         
         function showDate() {
             const out = document.getElementById('current-date');
-            
             const today = new Date();
-            
             out.textContent = today.toLocaleString('ru-RU');
         }
         
@@ -180,12 +234,41 @@
             document.getElementById('stop-btn').disabled = true;
         }
         
-        document.addEventListener('DOMContentLoaded', function() {
+        function updateTime() {
             showDate();
             showOtherDates();
+        }
+        
+        function startTimeUpdate() {
+            updateTime();
+            
+            timeInterval = setInterval(updateTime, 1000);
+            
+            document.getElementById('update-time-btn').disabled = true;
+            document.getElementById('stop-time-btn').disabled = false;
+            
+            document.getElementById('time-status').classList.add('status-active');
+        }
+        
+        function stopTimeUpdate() {
+            clearInterval(timeInterval);
+            
+            document.getElementById('update-time-btn').disabled = false;
+            document.getElementById('stop-time-btn').disabled = true;
+            
+            document.getElementById('time-status').classList.remove('status-active');
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTime();
             
             document.getElementById('start-btn').addEventListener('click', startAnimation);
             document.getElementById('stop-btn').addEventListener('click', stopAnimation);
+            
+            document.getElementById('update-time-btn').addEventListener('click', startTimeUpdate);
+            document.getElementById('stop-time-btn').addEventListener('click', stopTimeUpdate);
+            
+            document.getElementById('current-date').addEventListener('dblclick', updateTime);
         });
     </script>
 </body>
